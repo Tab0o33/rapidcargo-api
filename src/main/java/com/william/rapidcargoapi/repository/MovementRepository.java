@@ -8,4 +8,6 @@ import com.william.rapidcargoapi.model.Movement;
 @Repository
 public interface MovementRepository extends CrudRepository<Movement, Long> {
 
+	Iterable<Movement> findTop50ByOrderByDateTimeDesc();
+
 }

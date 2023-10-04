@@ -31,6 +31,10 @@ public class MovementService {
 		return movementRepository.findAll();
 	}
 
+	public Iterable<Movement> getLastMovements() {
+		return movementRepository.findTop50ByOrderByDateTimeDesc();
+	}
+
 	public Movement postMovement(Movement movement) {
 		Movement responseMovement = movementRepository.save(movement);
 		setAndSendEmail(responseMovement);
@@ -46,7 +50,7 @@ public class MovementService {
 			byte[] xmlData = xmlGenerationService.generateXmlData(responseMovement);
 			emailService.sendEmailWithXmlAttachment(to, subject, body, attachmentName, xmlData);
 		} catch (MessagingException | JAXBException e) {
-			// Gérez les exceptions ici
+			// Gérer les exceptions ici
 		}
 	}
 

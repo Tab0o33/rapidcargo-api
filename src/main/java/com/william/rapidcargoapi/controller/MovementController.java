@@ -27,6 +27,11 @@ public class MovementController {
 		return movementService.getMovements();
 	}
 
+	@GetMapping("/movements/latest")
+	public Iterable<Movement> getLastMovements() {
+		return movementService.getLastMovements();
+	}
+
 	@PostMapping("/movement")
 	public Movement postMovement(@RequestBody MovementDTO movementData,
 			@RequestParam(name = "type", required = true) MovementType movementType) {
