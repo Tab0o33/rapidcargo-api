@@ -2,6 +2,8 @@ package com.william.rapidcargoapi.model;
 
 import java.time.LocalDateTime;
 
+import com.william.rapidcargoapi.enums.MovementType;
+
 import lombok.Data;
 
 @Data
@@ -20,6 +22,7 @@ public class MovementDTO {
 
 	public MovementIn toMovementIn() {
 		MovementIn movementIn = new MovementIn();
+		movementIn.setMovementType(MovementType.in.toString());
 		movementIn.setTechnicalId(this.getTechnicalId());
 		movementIn.setCreationTime(this.getCreationTime());
 		movementIn.setCreationUserName(this.getCreationUserName());
@@ -33,6 +36,7 @@ public class MovementDTO {
 
 	public MovementOut toMovementOut() {
 		MovementOut movementOut = new MovementOut();
+		movementOut.setMovementType(MovementType.out.toString());
 		movementOut.setTechnicalId(this.getTechnicalId());
 		movementOut.setCreationTime(this.getCreationTime());
 		movementOut.setCreationUserName(this.getCreationUserName());

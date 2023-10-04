@@ -24,6 +24,9 @@ public class Movement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "movement_type", insertable = false, updatable = false)
+	private String movementType;
+
 	@Column(name = "technical_id")
 	private Long technicalId;
 
