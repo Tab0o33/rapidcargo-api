@@ -3,11 +3,13 @@ package com.william.rapidcargoapi.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
 @Data
 @Entity
 @DiscriminatorValue("out")
+@XmlRootElement
 public class MovementOut extends Movement {
 
 	@Column(name = "warehouse_code")
