@@ -17,6 +17,7 @@ public class MovementDTO {
 	private String warehouseCode;
 	private String warehouseLabel;
 	private String customsStatus;
+	private Merchandise merchandise;
 	private String documentType;
 	private Long documentRef;
 
@@ -31,6 +32,7 @@ public class MovementDTO {
 		movementIn.setWarehouseCode(this.getWarehouseCode());
 		movementIn.setWarehouseLabel(this.getWarehouseLabel());
 		movementIn.setCustomsStatus(this.getCustomsStatus());
+		movementIn.setMerchandise(this.getMerchandise());
 		return movementIn;
 	}
 
@@ -45,6 +47,7 @@ public class MovementDTO {
 		movementOut.setWarehouseCode(this.getWarehouseCode());
 		movementOut.setWarehouseLabel(this.getWarehouseLabel());
 		movementOut.setCustomsStatus(this.getCustomsStatus());
+		movementOut.setMerchandise(this.getMerchandise());
 		movementOut.setDocumentType(this.getDocumentType());
 		movementOut.setDocumentRef(this.getDocumentRef());
 		return movementOut;

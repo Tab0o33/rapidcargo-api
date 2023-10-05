@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import com.william.rapidcargoapi.model.Movement;
 import com.william.rapidcargoapi.repository.MovementRepository;
 
-import jakarta.mail.MessagingException;
-import jakarta.xml.bind.JAXBException;
 import lombok.Data;
 
 @Data
@@ -22,7 +20,7 @@ public class MovementService {
 	private EmailService emailService;
 
 	@Autowired
-	private XmlGenerationService xmlGenerationService;
+	private MerchandiseService merchandiseService;
 
 	@Autowired
 	private MovementRepository movementRepository;
@@ -36,22 +34,10 @@ public class MovementService {
 	}
 
 	public Movement postMovement(Movement movement) {
+		merchandiseService.extractAndSaveMerchandise(movement);
 		Movement responseMovement = movementRepository.save(movement);
-		setAndSendEmail(responseMovement);
+		emailService.setAndSendEmail(responseMovement);
 		return responseMovement;
-	}
-
-	private void setAndSendEmail(Movement responseMovement) {
-		String to = environment.getProperty("spring.mail.receiver");
-		String subject = environment.getProperty("spring.mail.subject");
-		String body = environment.getProperty("spring.mail.body");
-		String attachmentName = environment.getProperty("spring.mail.attachment.name");
-		try {
-			byte[] xmlData = xmlGenerationService.generateXmlData(responseMovement);
-			emailService.sendEmailWithXmlAttachment(to, subject, body, attachmentName, xmlData);
-		} catch (MessagingException | JAXBException e) {
-			// Gérer les exceptions ici
-		}
 	}
 
 }

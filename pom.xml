@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.william</groupId>
 	<artifactId>rapidcargo-api</artifactId>
-	<version>0.2.0</version>
+	<version>0.3.0</version>
 	<name>rapidcargo-api</name>
 	<description>Sujet technique 4SH</description>
 	<properties>

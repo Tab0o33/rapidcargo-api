@@ -2,6 +2,8 @@ package com.william.rapidcargoapi.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -10,6 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -22,6 +26,7 @@ public class Movement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonIgnore
 	private Long id;
 
 	@Column(name = "movement_type", insertable = false, updatable = false)
@@ -41,5 +46,9 @@ public class Movement {
 
 	@Column(name = "declaration_location")
 	private String declarationLocation;
+
+	@OneToOne
+	@JoinColumn(name = "merchandise_id")
+	private Merchandise merchandise;
 
 }
