@@ -12,7 +12,7 @@
 	<artifactId>rapidcargo-api</artifactId>
 	<version>0.3.0</version>
 	<name>rapidcargo-api</name>
-	<description>Sujet technique 4SH</description>
+	<description>Projet de gestion de flux de marchandises</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
